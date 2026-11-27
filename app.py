@@ -1,4 +1,13 @@
+import os
 import streamlit as st
+
+# Load API keys from Streamlit Cloud Secrets
+# Local execution continues to use the .env file loaded by agents.py/tools.py
+if hasattr(st, "secrets"):
+    for key in ["GROQ_API_KEY", "TAVILY_API_KEY"]:
+        if key in st.secrets:
+            os.environ[key] = st.secrets[key]
+
 from pipeline import run_research_pipeline
 
 
@@ -187,7 +196,7 @@ st.markdown('<div class="section-heading">What would you like to research?</div>
 with st.form("research_form"):
     topic = st.text_area(
         "Research topic",
-        placeholder="Example: Impact of war on stock markets",
+        placeholder="Example: Impact of AI on employment",
         height=90,
         label_visibility="collapsed"
     )

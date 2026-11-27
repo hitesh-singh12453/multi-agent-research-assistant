@@ -26,3 +26,8 @@ rich>=13.0.0
 
 # Optional: tracing and debugging
 langsmith>=0.3.0
+
+# Optional: tracing and debugging
+langsmith>=0.3.0
+
+tavily-python
